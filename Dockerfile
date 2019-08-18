@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.3.8-fpm
 MAINTAINER Kristoph Junge <kristoph.junge@gmail.com>
 
 # Change UID and GID of www-data user to match host privileges
@@ -72,8 +72,8 @@ ENV NODE_PATH /usr/lib/parsoid/node_modules:/usr/lib/parsoid/src
 
 # MediaWiki
 ARG MEDIAWIKI_VERSION_MAJOR=1
-ARG MEDIAWIKI_VERSION_MINOR=30
-ARG MEDIAWIKI_VERSION_BUGFIX=0
+ARG MEDIAWIKI_VERSION_MINOR=31
+ARG MEDIAWIKI_VERSION_BUGFIX=3
 
 RUN curl -s -o /tmp/keys.txt https://www.mediawiki.org/keys/keys.txt && \
     curl -s -o /tmp/mediawiki.tar.gz https://releases.wikimedia.org/mediawiki/$MEDIAWIKI_VERSION_MAJOR.$MEDIAWIKI_VERSION_MINOR/mediawiki-$MEDIAWIKI_VERSION_MAJOR.$MEDIAWIKI_VERSION_MINOR.$MEDIAWIKI_VERSION_BUGFIX.tar.gz && \
