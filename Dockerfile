@@ -63,8 +63,8 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
 
 # Parsoid
 RUN useradd parsoid --no-create-home --home-dir /usr/lib/parsoid --shell /usr/sbin/nologin
-RUN apt-key advanced --keyserver pgp.mit.edu --recv-keys 90E9F83F22250DD7 && \
-    echo "deb https://releases.wikimedia.org/debian buster-mediawiki main" > /etc/apt/sources.list.d/parsoid.list && \
+RUN apt-key advanced --keyserver pgp.mit.edu --recv-keys AF380A3036A03444 && \
+    echo "deb https://releases.wikimedia.org/debian jessie-mediawiki main" > /etc/apt/sources.list.d/parsoid.list && \
     apt-get update && \
     apt-get -y install parsoid --no-install-recommends
 COPY config/parsoid/config.yaml /usr/lib/parsoid/src/config.yaml
