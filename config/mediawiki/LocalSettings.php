@@ -163,7 +163,7 @@ if (getenv('MEDIAWIKI_DEFAULT_SKIN') != '') {
 }
 
 # Enabled skins
-wfLoadSkin( 'CologneBlue' );
+#wfLoadSkin( 'CologneBlue' );
 wfLoadSkin( 'Modern' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Vector' );
