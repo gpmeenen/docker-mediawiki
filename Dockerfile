@@ -110,10 +110,13 @@ RUN set -x; \
     && apt-get install -y --no-install-recommends \
         libldb-dev \
         libaprutil1-dev \
+        zip \
+        unzip \
     && ln -fs /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/ \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install ldap
+RUN docker-php-ext-install ldap \
+     composer install && composer require symfony/ldap
 
 # Set work dir
 WORKDIR /var/www/mediawiki
