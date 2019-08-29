@@ -101,10 +101,19 @@ RUN curl -s -o /tmp/extension-usermerge.tar.gz https://extdist.wmflabs.org/dist/
     rm /tmp/extension-usermerge.tar.gz
 
 # LDAP Support
-RUN apt-get update && apt-get install -y git libldap2-dev \
-    docker-php-ext-install zip && docker-php-ext-enable zip \
-    composer self-update && composer install && composer require symfony/ldap \
-    rm -r /var/lib/apt/lists/* 
+#RUN apt-get update && apt-get install -y git libldap2-dev \
+#    docker-php-ext-install zip && docker-php-ext-enable zip \
+#    composer self-update && composer install && composer require symfony/ldap \
+#    rm -r /var/lib/apt/lists/* 
+RUN set -x; \
+    apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libldb-dev \
+        libaprutil1-dev \
+    && ln -fs /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/ \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-install ldap
 
 # Set work dir
 WORKDIR /var/www/mediawiki
